@@ -3,19 +3,31 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Telegram Mystery Box Mini App</title>
+    <title>Mystery Box Mini App</title>
+    <!-- Link to your external CSS file -->
     <link rel="stylesheet" href="style.css">
 </head>
-<body
-     class="bg-black h-screen w-screen flex justify-center items-center">
-        <div id="cube" class="h-40 w-40 relative flex justify-center items-center cursor-pointer">
-          <div class="hexagon absolute"></div>
-          <div class="cube back h-40 w-40 absolute top-0 left-0"></div>
-          <div class="cube top h-40 w-40 absolute top-0 left-0"></div>
-          <div class="cube left h-40 w-40 absolute top-0 left-0"></div>
-          <div class="cube right h-40 w-40 absolute top-0 left-0"></div>
-          <div class="powerup absolute"></div>
+<body>
+    <!-- The cube container, centered using Flexbox in CSS -->
+    <div id="cube" class="h-40 w-40 relative flex justify-center items-center cursor-pointer">
+        <!-- Hexagon glow -->
+        <div class="hexagon absolute"></div>
 
+        <!-- Cube sides -->
+        <div class="cube back h-40 w-40 absolute top-0 left-0"></div>
+        <div class="cube top h-40 w-40 absolute top-0 left-0"></div>
+        <div class="cube left h-40 w-40 absolute top-0 left-0"></div>
+        <div class="cube right h-40 w-40 absolute top-0 left-0"></div>
+
+        <!-- Powerup -->
+        <div class="powerup absolute"></div>
+    </div>
+
+    <!-- Telegram WebApp initialization script -->
+    <script>
+        Telegram.WebApp.ready();
+    </script>
+    <!-- Link to your external JavaScript file -->
     <script src="app.js"></script>
 </body>
 </html>
