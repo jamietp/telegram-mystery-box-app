@@ -1,80 +1,108 @@
 :root {
-  --glow: rgba(255, 195, 26, 0.4);
+    --glow: rgba(255, 195, 26, 0.4);
 }
-body {
-    transform: scale(1.5);
-  }
-  .hexagon {
-    z-index: -2;
+
+html, body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center;  /* Center horizontally */
+    align-items: center;      /* Center vertically */
+    background-color: #000;   /* Black background */
+}
+
+#cube {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     position: relative;
-    width: 160px;
-    height: 92.38px;
+    height: 40vh;  /* Responsive size (40% of viewport height) */
+    width: 40vh;   /* Responsive size (square aspect ratio) */
+    transition: transform 300ms;
+    animation: hover 1.5s ease-in-out infinite alternate;
+    animation-play-state: running;
+}
+
+/* Glow effect for hexagon */
+.hexagon {
+    position: absolute;
+    width: 100%;
+    height: 100%;
     background-color: var(--glow);
-    margin: 46.19px 0;
     filter: blur(20px);
-  }
-  .hexagon:before,
-  .hexagon:after {
+    z-index: -2;
+    transition: all 750ms;
+}
+
+.hexagon:before,
+.hexagon:after {
     content: "";
     position: absolute;
     width: 0;
-    border-left: 80px solid transparent;
-    border-right: 80px solid transparent;
-  }
-  .hexagon:before {
+    border-left: 50% solid transparent;  /* Create hexagonal shape */
+    border-right: 50% solid transparent;
+}
+
+.hexagon:before {
     bottom: 100%;
-    border-bottom: 46.19px solid var(--glow);
-  }
-  .hexagon:after {
+    border-bottom: 25% solid var(--glow);
+}
+
+.hexagon:after {
     top: 100%;
-    width: 0;
-    border-top: 46.19px solid var(--glow);
-  }
-  .back {
-    background-image: url("https://res.cloudinary.com/dbrwtwlwl/image/upload/v1580369339/cube/mysteryBoxBackground_2x_b2espr.png");
+    border-top: 25% solid var(--glow);
+}
+
+/* Cube faces */
+.back, .top, .left, .right {
+    position: absolute;
+    height: 100%;
+    width: 100%;
     background-size: cover;
     background-position: center;
+    transition: all 750ms;
+    z-index: 1;
+}
+
+.back {
+    background-image: url('https://res.cloudinary.com/dbrwtwlwl/image/upload/v1580369339/cube/mysteryBoxBackground_2x_b2espr.png');  /* External image link */
     z-index: -1;
-  }
-  .top {
-    background-image: url("https://res.cloudinary.com/dbrwtwlwl/image/upload/v1580369339/cube/mysteryBoxTopFlap_2x_f9cb8g.png");
-    background-size: cover;
-    background-position: center;
-    z-index: 1;
-  }
-  .left {
-    background-image: url("https://res.cloudinary.com/dbrwtwlwl/image/upload/v1580369339/cube/mysteryBoxLeftFlap_2x_y8u4gz.png");
-    background-size: cover;
-    background-position: center;
-    z-index: 1;
-  }
-  .right {
-    background-image: url("https://res.cloudinary.com/dbrwtwlwl/image/upload/v1580369339/cube/mysteryBoxRightFlap_2x_abexhh.png");
-    background-size: cover;
-    background-position: center;
-    z-index: 1;
-  }
-  #cube {
-    animation: hover 1.5s ease-in-out infinite alternate;
-    transition: transform 300ms;
-    animation-play-state: running;
-  }
-  @keyframes hover {
-    from {
-      transform: translateY(-0.5rem);
-    }
-    to {
-      transform: translateY(0.5rem);
-    }
-  }
-  .powerup {
-    background-image: url("");
+}
+
+.top {
+    background-image: url('https://res.cloudinary.com/dbrwtwlwl/image/upload/v1580369339/cube/mysteryBoxTopFlap_2x_f9cb8g.png');  /* External image link */
+}
+
+.left {
+    background-image: url('https://res.cloudinary.com/dbrwtwlwl/image/upload/v1580369339/cube/mysteryBoxLeftFlap_2x_y8u4gz.png');  /* External image link */
+}
+
+.right {
+    background-image: url('https://res.cloudinary.com/dbrwtwlwl/image/upload/v1580369339/cube/mysteryBoxRightFlap_2x_abexhh.png');  /* External image link */
+}
+
+/* Powerup */
+.powerup {
+    position: absolute;
     background-size: cover;
     border-radius: 50%;
     z-index: 100;
     overflow: hidden;
     height: 48px;
     width: 48px;
-    z-index: -5;
+    opacity: 0; /* Hidden initially */
+    transition: all 750ms;
 }
-  
+
+/* Hover animation */
+@keyframes hover {
+    from {
+        transform: translateY(-0.5rem);
+    }
+    to {
+        transform: translateY(0.5rem);
+    }
+}
+
